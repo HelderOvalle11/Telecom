@@ -25,6 +25,8 @@ import pylab as plt
 ventana = tk.Tk()
 ventana.title('Proyecto 1 Sistemas de telecomunicaciones 1') #titulo
 ventana.geometry('700x600') #ancho y alto de la ventana
+  
+
 
 #Creando 2 tabs, 1 para ingresar datos y otro para los resultados
 tabControl = ttk.Notebook(ventana)
@@ -94,7 +96,8 @@ B_ip = tk.Button(tab1, text ="Submit IP",
                  command = ingresar_ip) #Boton para ingresar ip
 B_ip.place(x=10, y=120) #Ubicación del botón
 
-#------------------------ STARTIME Y ENDTIME --------------------------------------------
+#------------------------ STARTIME Y ENDTIME ---------------------------------------------------------------------------------------
+
 etiqueta_start = tk.Label(tab1,text="Tiempo de inicio (Año-Mes-DíaTHora:Min): ",
                        bg="black",fg="white") #Etiqueta para ingresar startime
 etiqueta_end = tk.Label(tab1,text="Tiempo de finalización (Año-Mes-DíaTHora:Min): ",
@@ -153,7 +156,16 @@ B_tiempo.place(x=10, y=355) #Ubicación del botón
 etiqueta_listado = tk.Label(inner_frame2,text="Listado de ASN:",bg="black",fg="white",font=("Verdana",16)) #Listado ASN
 etiqueta_listado.pack(fill=tk.X)
 
-#------------------------ DEF RIPE Y BGP --------------------------------------------
+def salir_programa():
+        ventana.destroy()
+        return
+
+B_salir = tk.Button(tab1, text ="Salir del programa",
+        bg="#BDBDBD",fg="black",height = 2, width = 20, command = salir_programa) #Boton para salir del programa
+B_salir.place(x=500, y=400) #Ubicación del botón
+
+#------------------------ DEF RIPE Y BGP ---------------------------------------------------------------------------------------
+
 def RIPE():
         ip = entry_ip.get()
         if not ip:
@@ -365,7 +377,7 @@ def EVENTOS():
                     msg3 = messagebox.showwarning( "WARNING", "No ha ingresado algún dato o Ingrese otro periodo de tiempo, ya que no existen path en eventos")
 
     return
-#------------------------ DIAGRAMA ANUNCIOS --------------------------------------------
+#------------------------ DIAGRAMA ANUNCIOS ----------------------------------------------------------------------------------------------------------------------------------------------------
 B_anuncios = tk.Button(tab2, text ="Diagrama de anuncios",bg="#BDBDBD",fg="black",height = 2, width = 20, command = RIPE) #Boton para anuncios
 B_anuncios.place(x=10, y=10) #Ubicación del botón
 
@@ -377,6 +389,6 @@ B_asn.place(x=10, y=110) #Ubicación del botón
 
 B_asn2 = tk.Button(tab2, text ="Diagrama eventos y ASN",bg="#BDBDBD",fg="black",height = 2, width = 30, command = EVENTOS) #Boton para ASN en específico
 B_asn2.place(x=10, y=210) #Ubicación del botón
-#--------------------------------- mainloop ------------------------------------------------------------------------
+#--------------------------------- mainloop -------------------------------------------------------------------------------------------------------------------------------
 ventana.mainloop()
 
